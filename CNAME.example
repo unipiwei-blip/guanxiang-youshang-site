@@ -1,0 +1,3 @@
+# 部署前把本文件改名为 CNAME（无扩展名），并把下一行替换成你的正式域名。
+# 只写域名，不要带 https:// 或结尾斜杠；用 GitHub Pages 的 Project 站点时不要创建 CNAME。
+www.your-domain.com

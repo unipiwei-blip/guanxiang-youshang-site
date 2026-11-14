@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>页面不存在｜东莞市湖南攸县商会</title>
+<meta name="description" content="页面不存在或已迁移，请返回东莞市湖南攸县商会首页。">
+<meta name="robots" content="noindex,follow">
+<meta name="theme-color" content="#100d0c">
+<link rel="icon" href="/assets/favicon-64.png" sizes="64x64" type="image/png">
+<style>
+  :root {
+    --ink: #100d0c;
+    --ink-3: #2a2320;
+    --red: #e2231a;
+    --red-deep: #a8170f;
+    --rice: #f4eee3;
+    --muted: #6b615a;
+    --line: #ded3c2;
+    --gold: #b78a3c;
+    --ease: cubic-bezier(.22, 1, .36, 1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "PingFang SC", "Microsoft YaHei", "Source Han Sans SC", system-ui, sans-serif;
+    background: #fbf8f2;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  .bar {
+    height: 3px;
+    background: var(--red);
+  }
+  .head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: min(1240px, 100% - 40px);
+    margin: 0 auto;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .head a { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+  .head b { font-size: .95rem; letter-spacing: .05em; }
+  .head small { font-size: .64rem; color: var(--muted); letter-spacing: .14em; }
+  .head span.tagline { font-size: .68rem; color: var(--muted); letter-spacing: .22em; }
+  .main {
+    width: min(1240px, 100% - 40px);
+    margin: 0 auto;
+    padding: clamp(60px, 12vw, 140px) 0 clamp(50px, 8vw, 90px);
+    display: grid;
+    gap: 20px;
+    max-width: 900px;
+  }
+  .num {
+    font-size: clamp(6rem, 22vw, 13rem);
+    font-weight: 900;
+    line-height: .86;
+    letter-spacing: -.06em;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--red);
+    font-variant-numeric: tabular-nums;
+  }
+  h1 { font-size: clamp(1.5rem, 3.4vw, 2.2rem); line-height: 1.35; letter-spacing: -.01em; }
+  p { color: var(--muted); line-height: 1.95; max-width: 46ch; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+  .links a {
+    text-decoration: none;
+    font-size: .88rem;
+    padding: 11px 20px;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    transition: background .3s var(--ease), color .3s var(--ease);
+  }
+  .links a:hover { background: var(--red); border-color: var(--red); color: #fff; }
+  .links a.ghost { border-color: var(--line); color: var(--ink-3); }
+  .links a.ghost:hover { border-color: var(--ink); background: var(--ink); color: var(--rice); }
+  .foot {
+    width: min(1240px, 100% - 40px);
+    margin: 0 auto;
+    padding: 18px 0 34px;
+    border-top: 1px solid var(--line);
+    font-size: .76rem;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    justify-content: space-between;
+  }
+  @media (prefers-reduced-motion: reduce) { .links a { transition: none; } }
+</style>
+</head>
+<body>
+<div class="bar" aria-hidden="true"></div>
+<div class="head">
+  <a href="/">
+    <b>莞香攸商</b>
+    <small>东莞市湖南攸县商会</small>
+  </a>
+  <span class="tagline">GUAN XIANG YOU SHANG</span>
+</div>
+
+<main class="main">
+  <div class="num" aria-hidden="true">404</div>
+  <h1>这条路上没有会址。</h1>
+  <p>你要找的页面可能已经迁移，或链接写错了。<br>回到首页重新走一遍，或直接去看商会最近做了什么。</p>
+  <div class="links">
+    <a href="/">返回首页</a>
+    <a class="ghost" href="/news.html">商会动态</a>
+    <a class="ghost" href="/contact.html">联系商会</a>
+  </div>
+</main>
+
+<div class="foot">
+  <span>© <span id="y">2026</span> 东莞市湖南攸县商会</span>
+  <span>广东省东莞市寮步镇松湖智谷科研中心 3 栋 801 室</span>
+</div>
+
+<script>
+  (function () {
+    document.getElementById('y').textContent = new Date().getFullYear();
+    // 项目页部署（username.github.io/repo/）时，把根路径链接补上仓库前缀
+    if (/\bgithub\.io$/.test(location.hostname)) {
+      var seg = location.pathname.split('/')[1];
+      if (!seg) return;
+      var base = '/' + seg;
+      document.querySelectorAll('a[href^="/"]').forEach(function (a) {
+        a.setAttribute('href', base + a.getAttribute('href'));
+      });
+      document.querySelectorAll('link[href^="/"]').forEach(function (l) {
+        l.setAttribute('href', base + l.getAttribute('href'));
+      });
+    }
+  })();
+</script>
+</body>
+</html>
