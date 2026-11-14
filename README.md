@@ -70,54 +70,65 @@ python -m http.server 8080
 
 ## 三、发布到 GitHub Pages
 
-### 1. 建仓库并推送
+### 当前状态：已上线
+
+| 项目 | 地址 |
+| --- | --- |
+| 线上站点 | https://unipiwei-blip.github.io/guanxiang-youshang-site/ |
+| 代码仓库 | https://github.com/unipiwei-blip/guanxiang-youshang-site |
+
+仓库为公开仓库，Pages 已开启（`main` 分支 / root，Enforce HTTPS 已勾选），全站地址已由 `tools/set-domain.ps1` 替换为上面的项目页地址，并记录在 `.site-base` 中。
+
+### 以后怎么更新
 
 ```powershell
 cd C:\Users\SAMSUNG\Doubao\chats\2026-11-14\new-chat-1\guanxiang-youshang-site
+git add -A
+git commit -m "更新：补充 2024 年会员走访动态"
+git push
+```
+
+推送后 1–2 分钟内自动重新构建，无需任何额外操作。
+
+### 如果换一个仓库或换一个账号
+
+```powershell
 git init
 git add .
 git commit -m "东莞市湖南攸县商会官网：初始版本"
 git branch -M main
-git remote add origin https://github.com/<你的用户名>/<仓库名>.git
+git remote add origin https://github.com/<用户名>/<仓库名>.git
 git push -u origin main
 ```
 
-### 2. 开启 Pages
-
-仓库 **Settings → Pages**：
-
-- Source 选 `Deploy from a branch`
-- Branch 选 `main`，目录选 `/ (root)`
-- 保存后等待 1–2 分钟
+然后 **Settings → Pages**：Source 选 `Deploy from a branch`，Branch 选 `main`，目录选 `/ (root)`。
 
 两种访问形态：
 
 | 形态 | 地址 | 需要做的事 |
 | --- | --- | --- |
-| 项目页（默认） | `https://<用户名>.github.io/<仓库名>/` | 运行 `set-domain.ps1` 传子路径；**不要**建 CNAME |
+| 项目页（当前形态） | `https://<用户名>.github.io/<仓库名>/` | 运行 `set-domain.ps1` 传子路径；**不要**建 CNAME |
 | 自定义域名 | `https://www.你的域名.com/` | 运行 `set-domain.ps1` 传域名；自动生成 CNAME；配 DNS |
 
 > `index.html` 必须是站点根目录下的文件名，这一点与普通单页交付物不同，是 GitHub Pages 的硬性要求。
 
-### 3. 替换域名占位符（**上线前必做**）
+### 替换站点地址（注册好域名后）
 
-站点所有 `canonical`、`og:url`、结构化数据、`sitemap.xml`、`robots.txt` 中都是占位符 `__SITE_DOMAIN__`。注册好域名后，一条命令全站替换：
+站点所有 `canonical`、`og:url`、结构化数据、`sitemap.xml`、`robots.txt` 里的地址，都由 `.site-base` 记录、由脚本统一维护。换域名只需要一条命令：
 
 ```powershell
-# 自定义域名
+# 换成自定义域名（会自动把旧的项目页地址全部替换掉，并生成 CNAME）
 pwsh tools/set-domain.ps1 -Domain www.gxyoushang.com -Backup
-
-# GitHub 项目页（不带 CNAME）
-pwsh tools/set-domain.ps1 -Domain yourname.github.io/guanxiang-youshang-site
 ```
 
 脚本行为：
 
 - 自动去掉 `https://` 前缀与结尾斜杠，统一补 `https://`
-- 扫描全站 `.html` / `.xml` / `.txt`，统计并替换占位符
+- 扫描全站 `.html` / `.xml` / `.txt`：既替换 `__SITE_DOMAIN__` 占位符，也替换 `.site-base` 里记录的旧地址，所以**可以反复换域名，不会残留上一版的链接**
 - 域名形态（不含 `/`）时写入 `CNAME`；子路径形态时提示不要使用 CNAME
+- 运行结果写回 `.site-base`，作为下一次替换的基准
 - `-Backup` 会把即将修改的文件复制到 `_backup/domain-<时间戳>/`
-- 重复运行不会破坏文件（没有占位符时只给警告）
+- 地址没变化时直接跳过，不会误改文件
 
 ### 4. 自定义域名 DNS
 
