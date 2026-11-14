@@ -192,12 +192,12 @@
       ctx.fill();
       ctx.beginPath();
       ctx.arc(hub.x, hub.y, 14 + pulse * 16, 0, Math.PI * 2);
-      ctx.strokeStyle = 'rgba(244,238,227,' + (0.22 - pulse * 0.12) + ')';
+      ctx.strokeStyle = 'rgba(14,27,36,' + (0.22 - pulse * 0.12) + ')';
       ctx.lineWidth = 1;
       ctx.stroke();
       if (w > 760) {
         ctx.font = '600 11px "PingFang SC","Microsoft YaHei",sans-serif';
-        ctx.fillStyle = 'rgba(244,238,227,.5)';
+        ctx.fillStyle = 'rgba(14,27,36,.5)';
         ctx.textAlign = 'center';
         ctx.fillText(hub.label, hub.x, hub.y + 26);
       }
@@ -219,7 +219,7 @@
           var d2 = dx * dx + dy * dy;
           if (d2 < 13200) {
             var alpha = (1 - d2 / 13200) * 0.3;
-            ctx.strokeStyle = 'rgba(244,238,227,' + alpha.toFixed(3) + ')';
+            ctx.strokeStyle = 'rgba(14,27,36,' + alpha.toFixed(3) + ')';
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(nodes[a].x, nodes[a].y);
@@ -231,7 +231,7 @@
       for (var k = 0; k < nodes.length; k++) {
         ctx.beginPath();
         ctx.arc(nodes[k].x, nodes[k].y, nodes[k].r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(244,238,227,.5)';
+        ctx.fillStyle = 'rgba(14,27,36,.5)';
         ctx.fill();
       }
       drawArc(t);
@@ -253,7 +253,7 @@
       nodes.forEach(function (n) {
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(244,238,227,.45)';
+        ctx.fillStyle = 'rgba(14,27,36,.45)';
         ctx.fill();
       });
       drawArc(0);

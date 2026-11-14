@@ -69,25 +69,25 @@ def font(size, bold=True):
 
 def og_card(logo_path, out):
     W, H = 1200, 630
-    bg = Image.new("RGB", (W, H), "#F4EEE3")
+    bg = Image.new("RGB", (W, H), "#FFFFFF")
     d = ImageDraw.Draw(bg)
     # 点阵底纹
     for y in range(24, H, 28):
         for x in range(24, W, 28):
-            d.point((x, y), fill="#DFD5C4")
+            d.point((x, y), fill="#E8EDF1")
     # 右侧留白处的同心细圆，只做边缘装饰，不压文字
     for r in (300, 232, 164):
-        d.ellipse((1150 - r, 300 - r, 1150 + r, 300 + r), outline="#E7C9BE", width=2)
+        d.ellipse((1150 - r, 300 - r, 1150 + r, 300 + r), outline="#F1DAD5", width=2)
     logo = Image.open(logo_path).convert("RGBA")
     logo.thumbnail((270, 270), Image.LANCZOS)
     bg.paste(logo, (78, (H - 12 - logo.height) // 2), logo)
     x = 430
-    d.text((x, 158), "莞香攸商", font=font(96), fill="#E2231A")
-    d.text((x, 284), "东莞市湖南攸县商会", font=font(42), fill="#100D0C")
-    d.line((x, 358, x + 96, 358), fill="#E2231A", width=4)
-    d.text((x, 384), "联络乡情 · 服务企业 · 融通莞攸", font=font(28, False), fill="#5A5049")
-    d.text((x, 440), "2015 年登记成立 · 东莞市寮步镇松湖智谷", font=font(22, False), fill="#8A8078")
-    d.rectangle((0, H - 12, W, H), fill="#100D0C")
+    d.text((x, 150), "DONGGUAN  ·  HUNAN  ·  YOUXIAN", font=font(22, False), fill="#B3160E")
+    d.text((x, 194), "东莞市湖南攸县商会", font=font(58), fill="#0E1B26")
+    d.line((x, 300, x + 96, 300), fill="#E2231A", width=4)
+    d.text((x, 330), "联络乡情 · 服务企业 · 融通莞攸", font=font(28, False), fill="#33434F")
+    d.text((x, 396), "2015 年登记成立 · 东莞市寮步镇松湖智谷", font=font(22, False), fill="#8A97A2")
+    d.rectangle((0, H - 12, W, H), fill="#E2231A")
     bg.save(out, "JPEG", quality=88, optimize=True)
     print("og", out)
 
